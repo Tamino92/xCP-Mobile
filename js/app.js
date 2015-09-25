@@ -63,7 +63,7 @@ $( document ).on( "pagebeforeshow", "#detail", function( event,data ) {
 $( document ).on( "pageinit", "#search", function( event ) {
     // Manage click on search page
     
-    $("#search_button").on('click tap',function(){
+    $("#search_button").on('click',function(){
         alert('search clicked') ;
         // creating a collection for this query
         var xcpQueryCollection = new XcpRtQueryCollection({queryName : 'xr_search_assets',
@@ -84,7 +84,12 @@ $( document ).on( "pageinit", "#search", function( event ) {
             crossDomain: true,
             contentType : 'application/json;charset=UTF-8',
             success : function(collection, response, options){
-                //alert.log(document.cookie);
+                alert('success');
+                alert(document.cookie);
+            },
+            error : function(collection, response, options){
+                alert('error');
+                alert(response);
             },
             beforeSend : function(xhr){
                 xhr.withCredentials = true;
