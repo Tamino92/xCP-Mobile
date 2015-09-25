@@ -1,0 +1,196 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>xCP Mobile</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
+
+    </head> 
+    <body style="display:none"> 
+        <script src="js/vendor/jquery-2.1.4.min.js"></script>  
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>       
+        <script type="text/javascript">
+            //var dd = $.Deferred();
+            var jqd = $.Deferred();
+
+            var app = {
+                deviceready : false,
+                appRoot : 'http://nkxcp22:8000/xRest',
+                authorizationHeader : "Basic "+btoa("dmadmin:demo.demo"),
+                acceptHeader : "application/json" ,
+                saveContentType : "application/vnd.emc.xcp+json",
+                searchItemClickedId : '',
+                searchItemClickedType : ''
+            } ;
+
+            $.when(/*dd,*/ jqd).done(doInit);
+            $(document).bind('mobileinit', function () {
+                jqd.resolve();
+            });
+            function doInit() {
+                console.log('mobileinit!!') ;
+                app.deviceready = true ;
+            }
+        </script>
+
+        <!-- page home-->
+        <div data-role="page" id="home">
+            <div data-role="header">
+                <h1>xCP Mobile - Home page</h1>
+            </div><!-- /header -->
+            <div data-role="content" >	
+                <p>xCP Home</p>	
+                <ul data-role="listview" data-inset="true">
+                    <li data-icon='info'><a href="#">Marcel</a></li>
+                    <li>Michu </li>
+                    <li>Gallet</li>
+                    <li>H</li>
+                </ul>
+            </div><!-- /content -->
+            <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home" data-transition="slideup">Home</a></li>
+                        <li><a href="#favorites" data-icon="star" data-transition="slideup">Favs</a></li>
+                        <li><a href="#notif" data-icon="alert" data-transition="slide">Notifs</a></li>
+                        <li><a href="#search" data-icon="search" data-transition="slide">Search</a></li>
+                        <li><a href="#setup" data-icon="gear" data-transition="slide">Setup</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page home-->
+
+        <!-- page favorites-->
+        <div data-role="page" id="favorites">
+            <div data-role="header" data-position="fixed">
+                <h1>xCP Mobile - Favorites page</h1>
+            </div><!-- /header -->
+            <div data-role="content" class="ui-content" id="favorites_content">
+            </div><!-- /content -->
+            <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home" data-transition="slideup">Home</a></li>
+                        <li><a href="#favorites" data-icon="star" data-transition="slideup">Favs</a></li>
+                        <li><a href="#notif" data-icon="alert" data-transition="slide">Notifs</a></li>
+                        <li><a href="#search" data-icon="search" data-transition="slide">Search</a></li>
+                        <li><a href="#setup" data-icon="gear" data-transition="slide">Setup</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page favorites-->
+
+
+        <!-- page notifications-->
+        <div data-role="page" id="notif">
+            <div data-role="header">
+                <h1>xCP Mobile - Notification page</h1>
+            </div><!-- /header -->
+            <div data-role="content" >	
+                <p>xCP Notification</p>		
+            </div><!-- /content -->
+            <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home" data-transition="slideup">Home</a></li>
+                        <li><a href="#favorites" data-icon="star" data-transition="slideup">Favs</a></li>
+                        <li><a href="#notif" data-icon="alert" data-transition="slide">Notifs</a></li>
+                        <li><a href="#search" data-icon="search" data-transition="slide">Search</a></li>
+                        <li><a href="#setup" data-icon="gear" data-transition="slide">Setup</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page notifications-->
+
+        <!-- page search-->
+        <div data-role="page" id="search">
+            <div data-role="header" data-position="fixed">
+                <h1>xCP Mobile - Search</h1>
+                <input type="search" name="search" id="search_input" data-inline="true" placeholder="Search for content...">
+                <button id="search_button" class="ui-btn ui-btn-inline">Go</button>
+            </div><!-- /header -->
+            <div data-role="content" id="search_content">
+                
+            </div><!-- /content -->
+            <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home" data-transition="slideup">Home</a></li>
+                        <li><a href="#favorites" data-icon="star" data-transition="slideup">Favs</a></li>
+                        <li><a href="#notif" data-icon="alert" data-transition="slide">Notifs</a></li>
+                        <li><a href="#search" data-icon="search" data-transition="slide">Search</a></li>
+                        <li><a href="#setup" data-icon="gear" data-transition="slide">Setup</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page search-->
+
+        <!-- page setup-->
+        <div data-role="page" id="setup">
+            <div data-role="header">
+                <h1>xCP Mobile - Setup page</h1>
+            </div><!-- /header -->
+            <div data-role="content" >	
+                <p>xCP Setup</p>		
+            </div><!-- /content -->
+            <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home" data-transition="slideup">Home</a></li>
+                        <li><a href="#favorites" data-icon="star" data-transition="slideup">Favs</a></li>
+                        <li><a href="#notif" data-icon="alert" data-transition="slide">Notifs</a></li>
+                        <li><a href="#search" data-icon="search" data-transition="slide">Search</a></li>
+                        <li><a href="#setup" data-icon="gear" data-transition="slide">Setup</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page setup-->
+
+        <!-- page detail-->
+        <div data-role="page" id="detail">
+            <div data-role="header">
+                <h1>xCP Mobile - Detail</h1>
+            </div><!-- /header -->
+            <div data-role="content" id="detail_content">	
+                		
+            </div><!-- /content -->
+            <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home" data-transition="slideup">Home</a></li>
+                        <li><a href="#favorites" data-icon="star" data-transition="slideup">Favs</a></li>
+                        <li><a href="#notif" data-icon="alert" data-transition="slide">Notifs</a></li>
+                        <li><a href="#search" data-icon="search" data-transition="slide">Search</a></li>
+                        <li><a href="#setup" data-icon="gear" data-transition="slide">Setup</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div><!-- /page setup-->
+        
+        
+        <!--<script src="phonegap.js"></script>-->
+
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        <script src="js/vendor/jquery.cookie.js"></script>
+        <script src="js/vendor/url.min.js"></script>
+        <script src="js/vendor/underscore-min.js"></script>
+        <script src="js/vendor/backbone-min.js"></script>
+        <script src="js/vendor/lodash.min.js"></script>
+        <script src="js/vendor/backbone-deep-model.min.js"></script>
+        <script src="js/models/xcprtqueryitem.js"></script>
+        <script src="js/models/xcprtquerycollection.js"></script> 
+        <script src="js/views/xcpquerycollectionview.js"></script>
+        <script src="js/views/xcpqueryitemview.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/views/deviceview.js"></script>
+        <script src="js/views/homeview.js"></script>
+        <script src="js/models/asset.js"></script>
+        <script src="js/models/assetcollection.js"></script>
+        <script src="js/views/assetcollectionview.js"></script>
+        <script src="js/views/assetview.js"></script>
+        
+
+    </body>
+</html>
