@@ -12,10 +12,7 @@
         <script src="js/vendor/jquery-2.1.4.min.js"></script>  
         <script src="js/vendor/jquery-migrate-1.2.1.js"></script>       
         <script type="text/javascript">
-            var dd = $.Deferred();
-            var jqd = $.Deferred();
-
-            var app = {
+           var app = {
                 deviceready : false,
                 appRoot : 'http://nkxcp22:8000/xRest',
                 authorizationHeader : "Basic "+btoa("dmadmin:demo.demo"),
@@ -24,13 +21,27 @@
                 searchItemClickedId : '',
                 searchItemClickedType : ''
             } ;
-
+            
+            
+            var dd = $.Deferred();
+            var jqd = $.Deferred();
             $.when(dd, jqd).done(doInit);
+            
+            
             $(document).bind('mobileinit', function () {
                 jqd.resolve();
             });
+        </script>
+        <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
+        <script src="phonegap.js"></script>
+        <script>
+            document.addEventListener('deviceready', deviceReady, false);
+            function deviceReady() {
+                dd.resolve();
+            }
+            
             function doInit() {
-                //alert('mobileinit!!') ;
+                alert('ready !!') ;
                 app.deviceready = true ;
             }
         </script>
@@ -170,9 +181,9 @@
         </div><!-- /page setup-->
         
         
-        <script src="phonegap.js"></script>
+        
 
-        <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
+        
 
         <script src="js/vendor/jquery.cookie.js"></script>
         <script src="js/vendor/url.min.js"></script>
