@@ -29,14 +29,17 @@
             
             
             $(document).bind('mobileinit', function () {
+                alert('mobileinit') ;
                 jqd.resolve();
             });
         </script>
+        <script src="js/app.js"></script>
         <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
         <script src="phonegap.js"></script>
         <script>
             document.addEventListener('deviceready', deviceReady, false);
             function deviceReady() {
+                alert('device ready') ;
                 dd.resolve();
             }
             
@@ -195,9 +198,7 @@
         <script src="js/models/xcprtquerycollection.js"></script> 
         <script src="js/views/xcpquerycollectionview.js"></script>
         <script src="js/views/xcpqueryitemview.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/views/deviceview.js"></script>
-        <script src="js/views/homeview.js"></script>
+        
         <script src="js/models/asset.js"></script>
         <script src="js/models/assetcollection.js"></script>
         <script src="js/views/assetcollectionview.js"></script>
