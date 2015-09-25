@@ -62,8 +62,9 @@ $( document ).on( "pagebeforeshow", "#detail", function( event,data ) {
 
 $( document ).on( "pageinit", "#search", function( event ) {
     // Manage click on search page
-    alert('search clicked') ;
-    $("#search_button").on('click',function(){
+    
+    $("#search_button").on('click tap',function(){
+        alert('search clicked') ;
         // creating a collection for this query
         var xcpQueryCollection = new XcpRtQueryCollection({queryName : 'xr_search_assets',
                                                            queryFetchData : {
