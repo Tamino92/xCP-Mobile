@@ -59,34 +59,37 @@ $( document ).on( "pagebeforeshow", "#detail", function( event,data ) {
 
 });
 
-// Manage click on search page
-$("#search_button").on('click',function(){
-    // creating a collection for this query
-    var xcpQueryCollection = new XcpRtQueryCollection({queryName : 'xr_search_assets',
-                                                       queryFetchData : {
-                                                           inline : true,
-                                                           view : ':all',
-                                                           'include-total' : true,
-                                                           'items-per-page' : 10,
-                                                           page : 1,
-                                                           input_eam_id : $("#search_input").val()
-                                                       }}) ;
 
-    xcpQueryCollectionView = new XcpQueryCollectionView({collection : xcpQueryCollection});     
-    xcpQueryCollection.fetch({ 
-        data: xcpQueryCollection.queryFetchData,
-        type : 'GET',
-        async : true,
-        crossDomain: true,
-        contentType : 'application/json;charset=UTF-8',
-        success : function(collection, response, options){
-            //alert.log(document.cookie);
-        },
-        beforeSend : function(xhr){
-            xhr.withCredentials = true;
-            xhr.setRequestHeader ("Accept",app.acceptHeader);
-            xhr.setRequestHeader ("Authorization", app.authorizationHeader);
-        }
+$( document ).on( "pageinit", "#search", function( event ) {
+    // Manage click on search page
+    $("#search_button").on('click',function(){
+        // creating a collection for this query
+        var xcpQueryCollection = new XcpRtQueryCollection({queryName : 'xr_search_assets',
+                                                           queryFetchData : {
+                                                               inline : true,
+                                                               view : ':all',
+                                                               'include-total' : true,
+                                                               'items-per-page' : 10,
+                                                               page : 1,
+                                                               input_eam_id : $("#search_input").val()
+                                                           }}) ;
+
+        xcpQueryCollectionView = new XcpQueryCollectionView({collection : xcpQueryCollection});     
+        xcpQueryCollection.fetch({ 
+            data: xcpQueryCollection.queryFetchData,
+            type : 'GET',
+            async : true,
+            crossDomain: true,
+            contentType : 'application/json;charset=UTF-8',
+            success : function(collection, response, options){
+                //alert.log(document.cookie);
+            },
+            beforeSend : function(xhr){
+                xhr.withCredentials = true;
+                xhr.setRequestHeader ("Accept",app.acceptHeader);
+                xhr.setRequestHeader ("Authorization", app.authorizationHeader);
+            }
+        });
+        $('#search_content').html(xcpQueryCollectionView.el);
     });
-    $('#search_content').html(xcpQueryCollectionView.el);
 });
