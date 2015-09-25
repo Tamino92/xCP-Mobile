@@ -80,7 +80,7 @@ $("#search_button").click(function(){
         crossDomain: true,
         contentType : 'application/json;charset=UTF-8',
         success : function(collection, response, options){
-            alert.log(document.cookie);
+            //alert.log(document.cookie);
         },
         beforeSend : function(xhr){
             xhr.withCredentials = true;
