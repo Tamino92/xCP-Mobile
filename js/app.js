@@ -60,7 +60,7 @@ $( document ).on( "pagebeforeshow", "#detail", function( event,data ) {
 });
 
 // Manage click on search page
-$("#search_button").click(function(){
+$("#search_button").bind('touchstart click tap',function(){
     // creating a collection for this query
     var xcpQueryCollection = new XcpRtQueryCollection({queryName : 'xr_search_assets',
                                                        queryFetchData : {
