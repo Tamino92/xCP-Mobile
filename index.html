@@ -4,7 +4,7 @@
         <title>xCP Mobile</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-        
+
 
     </head> 
     <!--<body style="display:none"> -->
@@ -12,7 +12,7 @@
         <script src="js/vendor/jquery-2.1.4.min.js"></script>  
         <script src="js/vendor/jquery-migrate-1.2.1.js"></script>       
         <script type="text/javascript">
-           var app = {
+            var app = {
                 deviceready : false,
                 appRoot : 'http://nkxcp22:8000/xRest',
                 authorizationHeader : "Basic "+btoa("dmadmin:demo.demo"),
@@ -21,13 +21,17 @@
                 searchItemClickedId : '',
                 searchItemClickedType : ''
             } ;
-            
-            
+
+
             var dd = $.Deferred();
             var jqd = $.Deferred();
+
+            function doInit() {
+                alert('ready !!') ;
+                app.deviceready = true ;
+            }
             $.when(dd, jqd).done(doInit);
-            
-            
+
             $(document).bind('mobileinit', function () {
                 alert('mobileinit') ;
                 jqd.resolve();
@@ -35,20 +39,18 @@
         </script>
         <script src="js/app.js"></script>
         <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
-        <script src="phonegap.js"></script>
+        
         <script>
+            
             document.addEventListener('deviceready', deviceReady, false);
             function deviceReady() {
                 alert('device ready') ;
                 dd.resolve();
             }
-            
-            function doInit() {
-                alert('ready !!') ;
-                app.deviceready = true ;
-            }
-        </script>
 
+
+        </script>
+        <script src="phonegap.js"></script>
         <!-- page home-->
         <div data-role="page" id="home">
             <div data-role="header">
@@ -126,7 +128,7 @@
                 <a data-role="button" id="search_button" class="ui-btn ui-btn-inline" href="#">Go</a>
             </div><!-- /header -->
             <div data-role="content" id="search_content">
-                
+
             </div><!-- /content -->
             <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
                 <div data-role="navbar">
@@ -168,7 +170,7 @@
                 <h1>xCP Mobile - Detail</h1>
             </div><!-- /header -->
             <div data-role="content" id="detail_content">	
-                		
+
             </div><!-- /content -->
             <div style="overflow: hidden;" data-role="footer" data-id="main-footer" data-position="fixed">      
                 <div data-role="navbar">
@@ -182,11 +184,11 @@
                 </div><!-- /navbar -->
             </div><!-- /footer -->
         </div><!-- /page setup-->
-        
-        
-        
 
-        
+
+
+
+
 
         <script src="js/vendor/jquery.cookie.js"></script>
         <script src="js/vendor/url.min.js"></script>
@@ -198,12 +200,12 @@
         <script src="js/models/xcprtquerycollection.js"></script> 
         <script src="js/views/xcpquerycollectionview.js"></script>
         <script src="js/views/xcpqueryitemview.js"></script>
-        
+
         <script src="js/models/asset.js"></script>
         <script src="js/models/assetcollection.js"></script>
         <script src="js/views/assetcollectionview.js"></script>
         <script src="js/views/assetview.js"></script>
-        
+
 
     </body>
 </html>
