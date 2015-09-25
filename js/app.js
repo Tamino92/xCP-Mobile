@@ -89,7 +89,7 @@ $( document ).on( "pageinit", "#search", function( event ) {
             },
             error : function(collection, response, options){
                 alert('error');
-                alert(response);
+                alert(response.toString());
             },
             beforeSend : function(xhr){
                 xhr.withCredentials = true;
@@ -98,5 +98,6 @@ $( document ).on( "pageinit", "#search", function( event ) {
             }
         });
         $('#search_content').html(xcpQueryCollectionView.el);
+        return false ; // to prevent browser to follow the link
     });
 });
