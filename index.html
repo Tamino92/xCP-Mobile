@@ -3,16 +3,16 @@
     <head> 
         <title>xCP Mobile</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <link rel="stylesheet" href="/css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
         
 
     </head> 
     <!--<body style="display:none"> -->
     <body> 
         <script src="js/vendor/jquery-2.1.4.min.js"></script>  
-        <script src="/js/vendor/jquery-migrate-1.2.1.js"></script>       
+        <script src="js/vendor/jquery-migrate-1.2.1.js"></script>       
         <script type="text/javascript">
-            //var dd = $.Deferred();
+            var dd = $.Deferred();
             var jqd = $.Deferred();
 
             var app = {
@@ -25,12 +25,12 @@
                 searchItemClickedType : ''
             } ;
 
-            $.when(/*dd,*/ jqd).done(doInit);
+            $.when(dd, jqd).done(doInit);
             $(document).bind('mobileinit', function () {
                 jqd.resolve();
             });
             function doInit() {
-                console.log('mobileinit!!') ;
+                alert('mobileinit!!') ;
                 app.deviceready = true ;
             }
         </script>
@@ -172,7 +172,7 @@
         
         <script src="phonegap.js"></script>
 
-        <script src="/js/vendor/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
 
         <script src="js/vendor/jquery.cookie.js"></script>
         <script src="js/vendor/url.min.js"></script>
