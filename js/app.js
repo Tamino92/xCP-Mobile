@@ -47,6 +47,8 @@ $( document ).on( "pagebeforeshow", "#detail", function( event,data ) {
                       }) ,
         type : 'GET',
         success : function(model,response,options) {
+            alert('success');
+            alert(document.cookie);
             console.log(_.find(model.attributes.links, function(link){ return link.type == 'types/relationships/xr_asset_folder_asset'; })) ;
             $('#detail_content').html(view.el);
         },
@@ -81,7 +83,6 @@ $( document ).on( "pageinit", "#search", function( event ) {
             data: xcpQueryCollection.queryFetchData,
             type : 'GET',
             async : true,
-            crossDomain: true,
             contentType : 'application/json;charset=UTF-8',
             success : function(collection, response, options){
                 alert('success');
