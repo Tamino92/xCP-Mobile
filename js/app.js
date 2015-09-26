@@ -93,7 +93,7 @@ $( document ).on( "pageinit", "#search", function( event ) {
                 alert(response.toString());
             },
             beforeSend : function(xhr){
-                xhr.withCredentials = true;
+                //xhr.withCredentials = true;
                 xhr.setRequestHeader ("Accept",app.acceptHeader);
                 xhr.setRequestHeader ("Authorization", app.authorizationHeader);
             }
