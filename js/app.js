@@ -83,7 +83,7 @@ $( document ).on( "pageinit", "#search", function( event ) {
             data: xcpQueryCollection.queryFetchData,
             type : 'GET',
             async : true,
-            contentType : 'application/json;charset=UTF-8',
+            contentType : 'application/json',
             success : function(collection, response, options){
                 alert('success');
                 alert(document.cookie);
