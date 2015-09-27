@@ -21,7 +21,7 @@
                 searchItemClickedId : '',
                 searchItemClickedType : ''
             } ;
-            $.support.cors=true;
+            
 
             var dd = $.Deferred();
             var jqd = $.Deferred();
@@ -34,6 +34,8 @@
 
             $(document).bind('mobileinit', function () {
                 alert('mobileinit') ;
+                $.mobile.allowCrossDomainPages = true;
+                $.support.cors=true;
                 jqd.resolve();
             });
         </script>
