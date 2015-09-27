@@ -4,7 +4,7 @@
         <title>xCP Mobile</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-
+        <script src="cordova.js"></script>
 
     </head> 
     <!--<body style="display:none"> -->
@@ -38,10 +38,9 @@
                 $.support.cors=true;
                 jqd.resolve();
             });
-        </script>
-        <script src="js/app.js"></script>
+        </script>       
         <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
-        <script src="cordova.js"></script>
+        <script src="js/app.js"></script>
         <script>
 
             document.addEventListener('deviceready', deviceReady, false);
