@@ -85,6 +85,7 @@ $( document ).on( "pageinit", "#search", function( event ) {
             async : true,
             contentType : 'application/json',
             crossDomain:true ,
+            dataType : 'json',
             success : function(collection, response, options){
                 alert('success');
                 alert(document.cookie);
