@@ -42,8 +42,9 @@ AssetView = Backbone.View.extend({
             },
             type : 'POST',
             async : true,
+            dataType : 'json',
             crossDomain: true,
-            contentType : 'application/json;charset=UTF-8',
+            contentType : 'application/json',
             success : function(collection, response, options){
                 
                 console.log($.cookie('x-csrf-token')) ;
@@ -54,7 +55,7 @@ AssetView = Backbone.View.extend({
                 xhr.withCredentials = true;
                 xhr.setRequestHeader ("Accept",app.acceptHeader);
                 xhr.setRequestHeader ("Authorization", app.authorizationHeader);
-                xhr.setRequestHeader ("Access-Control-Allow-Headers" , "Set-Cookie");
+                //xhr.setRequestHeader ("Access-Control-Allow-Headers" , "Set-Cookie");
             }
         });
     }

@@ -28,14 +28,14 @@
 
             function doInit() {
                 alert('ready !!') ;
+                $.mobile.allowCrossDomainPages = true;
+                $.support.cors=true;
                 app.deviceready = true ;
             }
             $.when(dd, jqd).done(doInit);
 
             $(document).bind('mobileinit', function () {
                 alert('mobileinit') ;
-                $.mobile.allowCrossDomainPages = true;
-                $.support.cors=true;
                 jqd.resolve();
             });
         </script>       
