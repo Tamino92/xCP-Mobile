@@ -6,7 +6,7 @@
         versionCode = "10"
         version     = "1.1.0">
 
-    <name>xCP Mobile</name>
+    <name>xCP Mobile de merde</name>
 
     <description>
         xCP Mobile
@@ -40,5 +40,6 @@
     <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
     <gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0" />
+
 
 </widget>
