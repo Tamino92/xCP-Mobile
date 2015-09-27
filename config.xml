@@ -24,8 +24,7 @@
 
 
     <!-- Allonwing navigation here * but not a good practice -->
-    <access origin="http://nkxcp22:8000" subdomains="true" />
-    <access origin="*" />
+    <access origin=" * " /> 
 
 
     <feature name="http://api.phonegap.com/1.0/camera"/>
