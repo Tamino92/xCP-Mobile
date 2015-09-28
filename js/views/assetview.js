@@ -33,30 +33,33 @@ AssetView = Backbone.View.extend({
         }
     },
     loadThumbnails : function(evt){
-        $.ajax({
-            url : 'http://nkxcp22:8000/xRest/processes/xr_get_gallery_urls',
-            data: {
-                page : 1,
-                start : 0,
-                'items-per-page' : 10
-            },
-            type : 'POST',
-            async : true,
-            dataType : 'json',
-            crossDomain: true,
-            contentType : 'application/json',
-            success : function(collection, response, options){
-                
-                console.log($.cookie('x-csrf-token')) ;
 
-                console.log(document.cookie) ;
-            },
-            beforeSend : function(xhr){
-                xhr.withCredentials = true;
-                xhr.setRequestHeader ("Accept",app.acceptHeader);
-                xhr.setRequestHeader ("Authorization", app.authorizationHeader);
-                //xhr.setRequestHeader ("Access-Control-Allow-Headers" , "Set-Cookie");
+        var assetThumbnails = new AssetThumbnails(
+            { "run-stateless" : "true", "data": { "variables" : {"asst_id": "080bd9cf80039f22"}}},
+            {
+                data : {
+                    page : 1,
+                    start : 0,
+                    'items-per-page' : 10
+                },
+                type : 'POST',
+                async : true,
+                dataType : 'json',
+                crossDomain: true,
+                contentType : 'application/json',
+                success : function(collection, response, options){
+                    console.log($.cookie('x-csrf-token')) ;
+                    console.log(document.cookie) ;
+
+                },
+                beforeSend : function (xhr) {
+                    xhr.withCredentials = true;
+                    xhr.setRequestHeader ("Accept", app.acceptHeader);
+                    xhr.setRequestHeader ("Authorization", app.authorizationHeader);
+                    xhr.setRequestHeader ("Content-Type", app.saveContentType);
+                }
             }
-        });
+        );
+        assetThumbnails.save();
     }
 });

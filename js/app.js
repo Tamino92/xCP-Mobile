@@ -20,11 +20,7 @@ $( document ).on( "pageinit", "#favorites", function( event ) {
               } ,
         type : 'GET',
         async : true,
-        contentType : 'application/json;charset=UTF-8',
-        beforeSend : function(xhr){
-            xhr.setRequestHeader ("Accept",app.acceptHeader);
-            xhr.setRequestHeader ("Authorization", app.authorizationHeader);
-        }
+        contentType : 'application/json;charset=UTF-8'
     });
     $('#favorites_content').html(app.assetCollectionView.el);
 
@@ -52,10 +48,12 @@ $( document ).on( "pagebeforeshow", "#detail", function( event,data ) {
             console.log(_.find(model.attributes.links, function(link){ return link.type == 'types/relationships/xr_asset_folder_asset'; })) ;
             $('#detail_content').html(view.el);
         },
-        beforeSend : function(xhr){
-            xhr.setRequestHeader ("Accept", app.acceptHeader);
-            xhr.setRequestHeader ("Authorization", app.authorizationHeader);
-        }
+            beforeSend : function (xhr) {
+                        xhr.withCredentials = true;
+                xhr.setRequestHeader ("Accept", app.acceptHeader);
+                xhr.setRequestHeader ("Authorization", app.authorizationHeader);
+                xhr.setRequestHeader ("Content-Type", app.saveContentType);
+                    }
     });
 
 
@@ -66,7 +64,6 @@ $( document ).on( "pageinit", "#search", function( event ) {
     // Manage click on search page
     
     $("#search_button").on('tap',function(){
-        alert('search clicked') ;
         // creating a collection for this query
         var xcpQueryCollection = new XcpRtQueryCollection({queryName : 'xr_search_assets',
                                                            queryFetchData : {
@@ -83,8 +80,6 @@ $( document ).on( "pageinit", "#search", function( event ) {
             data: xcpQueryCollection.queryFetchData,
             type : 'GET',
             async : true,
-            contentType : 'application/json',
-            crossDomain:true ,
             dataType : 'json',
             success : function(collection, response, options){
                 alert('success');
@@ -94,11 +89,12 @@ $( document ).on( "pageinit", "#search", function( event ) {
                 alert('error');
                 alert(response.toString());
             },
-            beforeSend : function(xhr){
-                //xhr.withCredentials = true;
-                xhr.setRequestHeader ("Accept",app.acceptHeader);
+            beforeSend : function (xhr) {
+                xhr.withCredentials = true;
+                xhr.setRequestHeader ("Accept", app.acceptHeader);
                 xhr.setRequestHeader ("Authorization", app.authorizationHeader);
-            }
+                xhr.setRequestHeader ("Content-Type", app.saveContentType);
+                    }
         });
         $('#search_content').html(xcpQueryCollectionView.el);
         return false ; // to prevent browser to follow the link
